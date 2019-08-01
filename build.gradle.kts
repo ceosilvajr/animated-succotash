@@ -1,6 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
 plugins {
+    id("com.google.cloud.tools.jib") version "1.4.0"
     id("org.springframework.boot") version "2.1.6.RELEASE"
     id("io.spring.dependency-management") version "1.0.7.RELEASE"
     kotlin("jvm") version "1.2.71"
@@ -20,6 +27,8 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("com.google.firebase:firebase-admin:6.7.0")
+    implementation("com.sendgrid:sendgrid-java:4.4.1")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -29,3 +38,5 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "1.8"
     }
 }
+
+jib.to.image = "gcr.io/{gcp-project-name}/${project.name}"
