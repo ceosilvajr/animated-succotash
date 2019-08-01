@@ -7,5 +7,5 @@ data class EmailPayload(
         var emailFrom: String = "",
         var emailTo: String = "",
         var templateId: String = "",
-        val customValues: Map<String, Any>
+        val customValues: Map<String, Any>? = null
 )
