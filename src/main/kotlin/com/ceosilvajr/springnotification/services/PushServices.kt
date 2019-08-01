@@ -22,10 +22,13 @@ class PushServices {
 
     fun pushConfirmTicket(payload: PushPayload): String {
         val notification = Notification(payload.title, payload.message)
-        val firebaseMessage = Message.builder()
+        val firebaseBuilder = Message.builder()
                 .setToken(payload.deviceToken)
                 .setNotification(notification)
-                .build()
+        payload.data.entries.forEach {
+            firebaseBuilder.putData(it.key, it.value.toString())
+        }
+        val firebaseMessage = firebaseBuilder.build()
         sendPush(firebaseMessage)
         return successResponse
     }

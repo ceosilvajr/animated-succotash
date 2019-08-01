@@ -6,5 +6,6 @@ package com.ceosilvajr.springnotification.payloads
 data class PushPayload(
         var deviceToken: String = "",
         var message: String = "",
-        var title: String? = null
+        var title: String? = null,
+        var data: Map<String, Any>
 )
