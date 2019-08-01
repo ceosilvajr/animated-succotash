@@ -20,7 +20,7 @@ class PushServices {
     @Value("\${firebase.success.response}")
     private val successResponse = ""
 
-    fun pushConfirmTicket(payload: PushPayload): String {
+    fun pushMessage(payload: PushPayload): String {
         val notification = Notification(payload.title, payload.message)
         val firebaseBuilder = Message.builder()
                 .setToken(payload.deviceToken)

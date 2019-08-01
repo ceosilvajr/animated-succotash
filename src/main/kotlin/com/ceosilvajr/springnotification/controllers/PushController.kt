@@ -18,7 +18,7 @@ class PushController(@Autowired val service: PushServices) {
 
     @PostMapping
     fun sendNotification(@RequestBody body: PushPayload): ResponseEntity<String> {
-        return ResponseEntity.ok(service.pushConfirmTicket(body))
+        return ResponseEntity.ok(service.pushMessage(body))
     }
 
 }
