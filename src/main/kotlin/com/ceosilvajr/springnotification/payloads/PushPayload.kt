@@ -7,5 +7,5 @@ data class PushPayload(
         var deviceToken: String = "",
         var message: String = "",
         var title: String? = null,
-        var data: Map<String, Any>
+        var data: Map<String, Any>? = null
 )

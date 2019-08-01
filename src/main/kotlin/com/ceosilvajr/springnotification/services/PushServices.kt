@@ -25,7 +25,7 @@ class PushServices {
         val firebaseBuilder = Message.builder()
                 .setToken(payload.deviceToken)
                 .setNotification(notification)
-        payload.data.entries.forEach {
+        payload.data?.entries?.forEach {
             firebaseBuilder.putData(it.key, it.value.toString())
         }
         val firebaseMessage = firebaseBuilder.build()
